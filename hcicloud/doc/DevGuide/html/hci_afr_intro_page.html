@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): AFR能力</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_capability_api.html">能力API</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">AFR能力 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>以下描述了如何使用灵云AFR能力。</p>
+<h1><a class="anchor" id="hci_afr_intro"></a>
+1. AFR简介</h1>
+<p>AFR 人脸识别能力，对图像中的人脸进行检测、注册，支持对未知图像人脸的的确认和辨识。</p>
+<h1><a class="anchor" id="hci_afr_choice"></a>
+2. 选择模块和能力</h1>
+<p>灵云可以提供人脸识别能力。 无论使用云端或本地端的人脸识别能力，基础模块 hci_afr都是需要的。 使用云端能力时，需要加上hci_afr_cloud_recog模块； 使用本地能力时，需要加上hci_afr_local_recog模块。</p>
+<h1><a class="anchor" id="hci_afr_detect_info"></a>
+3. 人脸检测</h1>
+<p>通过对会话图像进行检测，提取其中的人脸特征。</p>
+<p>示例代码如下： </p>
+<div class="fragment"><div class="line"><span class="comment">// 加载检测图像(根据实际情况传入文件名)</span></div>
+<div class="line">byte[] buffer = HciCloudHelper.getAssetFileData(filename);</div>
+<div class="line"><span class="keywordflow">if</span> (buffer.length == 0) {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 会话config</span></div>
+<div class="line">String sessionConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + capkey;</div>
+<div class="line">Session session = <span class="keyword">new</span> Session();</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 开始会话</span></div>
+<div class="line"><span class="keywordtype">int</span> errCode = HciCloudAfr.hciAfrSessionStart(sessionConfig, session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;session start error.&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 设置检测图像</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSetImageBuffer(session, buffer);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;session start error.&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 识别config</span></div>
+<div class="line">String detectConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + capkey;</div>
+<div class="line">detectConfig += <span class="stringliteral">&quot;,&quot;</span> + AfrConfig.SessionConfig.PARAM_KEY_GENDER + <span class="stringliteral">&quot;=&quot;</span></div>
+<div class="line">                + AfrConfig.SessionConfig.PARAM_KEY_GENDER_ENABLE;</div>
+<div class="line">AfrDetectResult result = <span class="keyword">new</span> AfrDetectResult();</div>
+<div class="line"><span class="comment">// AFR人脸检测</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrDetect(session, detectConfig, result);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 释放检测结果。如果不主动释放，检测结果占用的资源将在会话结束后释放。</span></div>
+<div class="line">HciCloudAfr.hciAfrFreeDetectResult(result);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 关闭会话</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;session stop error.&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="hci_afr_enroll_info"></a>
+4. 人脸注册</h1>
+<p>接口中的人脸ID(faceId)，由同一会话中的检测接口返回。 使用云端能力，调用hci_afr_enroll接口进行注册时，用户唯一标识可以由服务端产生，也可以由用户自己指定，必须要保证该标识的唯一性。 使用本地能力，调用hci_afr_enroll接口进行注册时，用户唯一标识由用户指定（应用层维护用户标识），需要保证该标识的唯一性。 注册成功后，可以对该人脸模型进行多次训练。</p>
+<p>示例代码如下： </p>
+<div class="fragment"><div class="line"><span class="comment">// 启动 AFR Session</span></div>
+<div class="line">this.mCapKey = AccountInfo.getInstance().getCapKey();</div>
+<div class="line">String sSessionConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + mCapKey;</div>
+<div class="line">Session session = <span class="keyword">new</span> Session();</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> errCode = HciCloudAfr.hciAfrSessionStart(sSessionConfig, session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 设置检测图像</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSetImageBuffer(session, buffer);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line">ShowMessage( <span class="stringliteral">&quot;session start error.&quot;</span>);</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 识别config</span></div>
+<div class="line">String detectConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + capkey;</div>
+<div class="line">detectConfig += <span class="stringliteral">&quot;,&quot;</span> + AfrConfig.SessionConfig.PARAM_KEY_GENDER + <span class="stringliteral">&quot;=&quot;</span></div>
+<div class="line">+ AfrConfig.SessionConfig.PARAM_KEY_GENDER_ENABLE;</div>
+<div class="line">AfrDetectResult result = <span class="keyword">new</span> AfrDetectResult();</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// AFR人脸检测</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrDetect(session, detectConfig, result);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 人脸注册。需要通过配置参数设置人脸ID(faceId)</span></div>
+<div class="line">String enrollConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + mCapKey;</div>
+<div class="line">enrollConfig += <span class="stringliteral">&quot;,faceId=&quot;</span> + faceId;</div>
+<div class="line">AfrEnrollResult enrollResult = <span class="keyword">new</span> AfrEnrollResult();</div>
+<div class="line">errCode = HciCloudAfr.hciAfrEnroll(session, enrollConfig, enrollResult);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        <span class="comment">// 启动失败</span></div>
+<div class="line">        HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 释放检测结果。如果不主动释放，检测结果占用的资源将在会话结束后释放。</span></div>
+<div class="line">HciCloudAfr.hciAfrFreeDetectResult(result);</div>
+<div class="line"></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+</div><!-- fragment --><h1><a class="anchor" id="hci_afr_verify"></a>
+5. 人脸确认</h1>
+<p>接口中的人脸ID(faceId)，由同一会话中的检测接口返回。 使用人脸ID与已注册的用户ID的特征进行匹配性确认。确认时可以设置阈值(threshold)。</p>
+<p>示例代码如下： </p>
+<div class="fragment"><div class="line"><span class="comment">// 启动 AFR Session</span></div>
+<div class="line">String sSessionConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + mCapKey;</div>
+<div class="line">ShowMessage( <span class="stringliteral">&quot;hciAfrSessionStart config: &quot;</span> + sSessionConfig + <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line">Session session = <span class="keyword">new</span> Session();</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> errCode = HciCloudAfr.hciAfrSessionStart(sSessionConfig, session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 设置检测图像</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSetImageBuffer(session, buffer);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line">ShowMessage( <span class="stringliteral">&quot;session start error.&quot;</span>);</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 识别config</span></div>
+<div class="line">String detectConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + capkey;</div>
+<div class="line">detectConfig += <span class="stringliteral">&quot;,&quot;</span> + AfrConfig.SessionConfig.PARAM_KEY_GENDER + <span class="stringliteral">&quot;=&quot;</span></div>
+<div class="line">+ AfrConfig.SessionConfig.PARAM_KEY_GENDER_ENABLE;</div>
+<div class="line">AfrDetectResult result = <span class="keyword">new</span> AfrDetectResult();</div>
+<div class="line"><span class="comment">// AFR人脸检测</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrDetect(session, detectConfig, result);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// AFR校验。需要指定人脸ID(faceId)和用户ID(userId)</span></div>
+<div class="line">String verifyConfig = <span class="stringliteral">&quot;userId=&quot;</span> + userId;</div>
+<div class="line">verifyConfig += <span class="stringliteral">&quot;,faceId=&quot;</span> + faceId;</div>
+<div class="line"></div>
+<div class="line">errCode = HciCloudAfr.hciAfrVerify(session, verifyConfig, verifyResult);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordflow">if</span> (verifyResult.getStatus() == AfrVerifyResult.AFR_VERIFY_STATUS_MATCH) {</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;faceid matches with user_id !&quot;</span>);</div>
+<div class="line">} <span class="keywordflow">else</span> {</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;faceid doesn&#39;t match with user_id !&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 释放检测结果。如果不主动释放，检测结果占用的资源将在会话结束后释放。</span></div>
+<div class="line">HciCloudAfr.hciAfrFreeDetectResult(result);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 结束 AFR Session</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+</div><!-- fragment --><h1><a class="anchor" id="hci_afr_identify"></a>
+6. 人脸辨识</h1>
+<p>接口中的人脸ID(faceId)，由同一会话中的检测接口返回。 待辨识用户ID需要加入加入用户组（hci_add_user）。 不需要继续辨识的用户ID需要从用户组删除（hci_remove_user）。 对于云端识别，可以使用hci_create_group和hci_delete_group创建和删除用户组。 对于本地识别，使用空字符串作为组名，进行本地用户组维护（即本地只支持一个用户组）。 可以在一组用户中进行指定人脸ID(通过检测获取)的用户辨识。可以指定辨识结果的候选数量和阈值。</p>
+<p>示例代码如下： </p>
+<div class="fragment"><div class="line"><span class="comment">// 创建用户组</span></div>
+<div class="line">String groupId = <span class="stringliteral">&quot;afrTestGroup&quot;</span>;</div>
+<div class="line"><span class="keywordtype">int</span> errCode = HciCloudUser.hciCreateGroup(groupId,</div>
+<div class="line">        HciCloudUser.kHciGroupTypeExclusive);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;hciCreateGroup falied. errorCode = &quot;</span> + errCode + <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line">} <span class="keywordflow">else</span> {</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;hciCreateGroup success. errorCode = &quot;</span> + errCode + <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 加入用户组(重复调用此函数加入多个用户到组)</span></div>
+<div class="line">errCode = HciCloudUser.hciAddUser(groupId, userId);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 启动 AFR Session</span></div>
+<div class="line">String sSessionConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + mCapKey;</div>
+<div class="line">ShowMessage( <span class="stringliteral">&quot;hciAfrSessionStart config: &quot;</span> + sSessionConfig + <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line">Session session = <span class="keyword">new</span> Session();</div>
+<div class="line"></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSessionStart(sSessionConfig, session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 设置检测图像</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSetImageBuffer(session, buffer);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line">ShowMessage( <span class="stringliteral">&quot;session start error.&quot;</span>);</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 识别config</span></div>
+<div class="line">String detectConfig = <span class="stringliteral">&quot;capkey=&quot;</span> + capkey;</div>
+<div class="line">detectConfig += <span class="stringliteral">&quot;,&quot;</span> + AfrConfig.SessionConfig.PARAM_KEY_GENDER + <span class="stringliteral">&quot;=&quot;</span></div>
+<div class="line">+ AfrConfig.SessionConfig.PARAM_KEY_GENDER_ENABLE;</div>
+<div class="line">AfrDetectResult result = <span class="keyword">new</span> AfrDetectResult();</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// AFR人脸检测</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrDetect(session, detectConfig, result);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 辨识</span></div>
+<div class="line">String identifyConfig = <span class="stringliteral">&quot;groupId=&quot;</span> + groupId;</div>
+<div class="line">identifyConfig += <span class="stringliteral">&quot;,faceId=&quot;</span> + faceId;</div>
+<div class="line">errCode = HciCloudAfr.hciAfrIdentify(session, identifyConfig, identifyResult);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE == errCode) {</div>
+<div class="line">        <span class="comment">// 显示辨识结果</span></div>
+<div class="line">        <span class="keywordflow">for</span> (AfrIdentifyResultItem item : identifyResult</div>
+<div class="line">                        .getIdentifyResultItemList()) {</div>
+<div class="line">                System.out.printf(<span class="stringliteral">&quot;identify user(%s,%d) in group(%s)\n&quot;</span>,</div>
+<div class="line">                                item.getUserId(), item.getScore(), groupId);</div>
+<div class="line">        }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 释放检测结果。如果不主动释放，检测结果占用的资源将在会话结束后释放。</span></div>
+<div class="line">HciCloudAfr.hciAfrFreeDetectResult(result);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 结束Afr Session</span></div>
+<div class="line">errCode = HciCloudAfr.hciAfrSessionStop(session);</div>
+<div class="line"><span class="keywordflow">if</span> (HciErrorCode.HCI_ERR_NONE != errCode) {</div>
+<div class="line">        ShowMessage( <span class="stringliteral">&quot;hciAfrSessionStop return &quot;</span> + errCode + <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// 删除用户组</span></div>
+<div class="line">errCode = HciCloudUser.hciDeleteGroup(groupId);</div>
+<div class="line"><span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:01 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

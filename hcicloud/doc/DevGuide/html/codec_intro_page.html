@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): 音频编解码库</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_appendix.html">附录</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">音频编解码库 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="codec_common"></a>
+1. 简介</h1>
+<p>语音数据的数据量是比较大的，在标准的16K 16bit PCM数据格式下，每秒的数据量是32K字节。 因此在使用云端TTS、ASR或者VPR时，可以利用音频编解码技术来减少在网络传输的流量。 在使用云端TTS时，当指定相应的编码配置后，TTS服务器就会根据此配置将合成的音频数据进行编码， 通过网络传输到终端后，灵云SDK会自动进行解码，生成开发者可用的数据格式。 在使用云端ASR或者云端VPR时，由灵云SDK将输入的音频数据进行编码，通过网络传输到云端，ASR和VPR服务器再进行解码识别。</p>
+<p>目前灵云系统提供了两个音频编解码库，分别是jtspeex和jtopus。speex的算法较简单，编解码库的体积较小，识别率略高于opus，因此一般建议开发者在进行语音识别时配置encode=speex。</p>
+<p>在Windows/Linux/Android平台下，这些编解码库是动态加载的。因此如果在应用中只使用某一种编码方式， 那么只需要在最后的包中带上相应的库即可，其它编码库是不需要的。但在iOS平台下因为不支持动态库， 因此两种方式的编解码库都是以静态库提供的，而且使用时必须都进行链接。</p>
+<p>由于TTS、ASR和VPR都使用这两个编解码库，因此如果同时使用TTS、ASR或者VPR的话，这两个库是可以共享的。</p>
+<p>另外，在Android平台下，提供了 armeabi 和 armeabi-v7a 两个版本的编解码库。 如果能确认用户手机是armv7a以上CPU，则可以使用armeabi-v7a中的jtspeex.so或jtopus.so， 这样编解码速度更快。</p>
+<h1><a class="anchor" id="codec_for_tts"></a>
+2. TTS音频压缩</h1>
+<p>语音合成对音频进行编码的时候还提供了encLevel配置项，选项从0-10, 级别越低，压缩程度越高，流量越小， 但声音质量也越差。各级别的流量如下：</p>
+<div style="margin-left: 50px"> <table class="doxtable">
+<tr>
+<td>级别</td><td>比特率 (每秒bit数)   </td></tr>
+<tr>
+<td>0</td><td>4Kbps   </td></tr>
+<tr>
+<td>1</td><td>6Kbps   </td></tr>
+<tr>
+<td>2</td><td>8Kbps   </td></tr>
+<tr>
+<td>3</td><td>10Kbps   </td></tr>
+<tr>
+<td>4</td><td>13Kbps   </td></tr>
+<tr>
+<td>5</td><td>17Kbps   </td></tr>
+<tr>
+<td>6</td><td>21Kbps   </td></tr>
+<tr>
+<td>7</td><td>24Kbps   </td></tr>
+<tr>
+<td>8</td><td>28Kbps   </td></tr>
+<tr>
+<td>9</td><td>35Kbps   </td></tr>
+<tr>
+<td>10</td><td>42Kbps   </td></tr>
+</table>
+</div><p>也即大概在级别2的时候，流量为每秒 1K 字节，在5的时候每秒大概2K字节，在7的时候每秒3K字节。 根据测试，在0-2的范围压缩后的声音质量是较差的，到3的时候，已经基本可以接受，但会有一些杂音影响效果。 到级别7的时候效果已经很好，基本和未压缩的原始语音效果听不出太多区别。</p>
+<p>目前的缺省级别为7，如果希望进一步减少流量，可以采用更小的级别。不建议使用更大的级别， 因为流量增大并没有带来太多听感上的提高。</p>
+<h1><a class="anchor" id="codec_for_format"></a>
+3.音频编码格式支持</h1>
+<p>ASR和VPR同样提供encLevel编码级别的选项。目前和TTS默认的encLevel级别相同，也即encLeve=7，流量在每秒3K字节。 由于8K的音频数据目前只用于云端语法识别上，而将来也会统一到16K上，因此speex和opus编解码库目前未对8K的数据进行处理。</p>
+<p>audioFormat是指传入数据的格式，但在将语音数据上传至云端进行识别时，会查看encode配置项，进行编码传输， 以减小上传的数据量和占用的带宽。encode为none时，表示不进行编码转换，实际传输时就采用输入的原始数据和格式。 opus是一种较好的语音压缩格式，可以达到很大的压缩比。 speex压缩方式在同样压缩比率的情况下，识别率比opus略有下降，但其算法简单，编解码库较小。开发者可自行选择。 <br/>
+<br/>
+ 下表中定义了在 audioFomat 和 encode 不同组合的情况下，实际传输的数据格式。N/A表示不常用的组合方式， 因此当前版本也未加以支持。 <br/>
+<br/>
+ </p>
+<table class="doxtable">
+<tr>
+<td colspan="2" rowspan="2">&#160; </td><td colspan="5" align="center"><b>encode</b>  </td></tr>
+<tr>
+<td>none </td><td>ulaw </td><td>alaw </td><td>speex </td><td>opus  </td></tr>
+<tr>
+<td rowspan="6"><b>audioFormat</b> </td><td>pcm8k16bit </td><td>pcm8k16bit </td><td>ulaw8k8bit </td><td>alaw8k8bit </td><td>N/A </td><td>N/A  </td></tr>
+<tr>
+<td>ulaw8k8bit </td><td>ulaw8k8bit </td><td>ulaw8k8bit </td><td>N/A </td><td>N/A </td><td>N/A  </td></tr>
+<tr>
+<td>alaw8k8bit </td><td>alaw8k8bit </td><td>N/A </td><td>alaw8k8bit </td><td>N/A </td><td>N/A  * </td></tr>
+<tr>
+<td>pcm16k16bit </td><td>pcm16k16bit </td><td>ulaw16k8bit </td><td>alaw16k8bit </td><td>speex </td><td>opus  </td></tr>
+<tr>
+<td>ulaw16k8bit </td><td>ulaw16k8bit </td><td>ulaw16k8bit </td><td>N/A </td><td>speex </td><td>opus  </td></tr>
+<tr>
+<td>alaw16k8bit </td><td>alaw16k8bit </td><td>N/A </td><td>alaw16k8bit </td><td>speex </td><td>opus  </td></tr>
+</table>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:02 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

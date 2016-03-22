@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): NLU能力描述</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_appendix.html">附录</a></li><li class="navelem"><a class="el" href="caplist_page.html">能力列表</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">NLU能力描述 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>下面列出灵云支持的NLU能力：</p>
+<p><b>云端NLU能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>支持配置</b>  </td></tr>
+<tr>
+<td>nlu.cloud </td><td><b>intention:</b>weather,flight,joke,...  </td></tr>
+</table>
+<p><b>云端NLU能力支持的意图配置</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>意图识别领域（intention）</b> </td><td><b>中文描述</b>  </td></tr>
+<tr>
+<td>weather </td><td>天气  </td></tr>
+<tr>
+<td>map </td><td>导航  </td></tr>
+<tr>
+<td>shopping </td><td>购物  </td></tr>
+<tr>
+<td>train </td><td>火车查询  </td></tr>
+<tr>
+<td>flight </td><td>航班查询  </td></tr>
+<tr>
+<td>music </td><td>音乐点播  </td></tr>
+<tr>
+<td>message </td><td>发短信  </td></tr>
+<tr>
+<td>schedule </td><td>提醒  </td></tr>
+<tr>
+<td>stock </td><td>股票查询  </td></tr>
+<tr>
+<td>weibo </td><td>微博  </td></tr>
+<tr>
+<td>websearch </td><td>搜索网页领域  </td></tr>
+<tr>
+<td>website </td><td>登录网站领域  </td></tr>
+<tr>
+<td>calendar </td><td>日历  </td></tr>
+<tr>
+<td>cookbook </td><td>菜谱  </td></tr>
+<tr>
+<td>exchangeRate </td><td>汇率  </td></tr>
+<tr>
+<td>hotel </td><td>酒店查询  </td></tr>
+<tr>
+<td>joke </td><td>笑话  </td></tr>
+<tr>
+<td>news </td><td>新闻  </td></tr>
+<tr>
+<td>restaurant </td><td>餐馆查询  </td></tr>
+<tr>
+<td>story </td><td>故事  </td></tr>
+<tr>
+<td>translation </td><td>翻译  </td></tr>
+<tr>
+<td>video </td><td>视频点播  </td></tr>
+<tr>
+<td>yellowpage </td><td>黄页  </td></tr>
+<tr>
+<td>tvPrograms </td><td>智能家居  </td></tr>
+<tr>
+<td>tvChannels </td><td>电视频道  </td></tr>
+<tr>
+<td>app </td><td>应用  </td></tr>
+<tr>
+<td>musicControl </td><td>音乐控制  </td></tr>
+<tr>
+<td>videoControl </td><td>视频控制  </td></tr>
+<tr>
+<td>deviceControl </td><td>设备控制  </td></tr>
+<tr>
+<td>contacts </td><td>打电话  </td></tr>
+<tr>
+<td>radio </td><td>收音机  </td></tr>
+<tr>
+<td>carControl </td><td><p class="starttd">车载控制 </p>
+<p class="endtd"></p>
+</td></tr>
+</table>
+<p>更多意图配置请咨询捷通华声或关注开发者社区</p>
+<p><b>本地NLU能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>支持配置</b> </td><td><b>资源依赖项</b>  </td></tr>
+<tr>
+<td>nlu.local.recog </td><td>candidateCount  </td><td>dl.sys.dct<br/>
+ system_lexicon.txt<br/>
+ user_intent.txt<br/>
+ user_lexicon.txt<br/>
+ user_phrase.txt<br/>
+   </td></tr>
+</table>
+<p><b>本地NLU能力支持的语法示例</b><br/>
+ 系统词典： </p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;tag_hi&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;lexicon&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;你好&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;hello&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;hi&quot;</span></div>
+<div class="line">          ]</div>
+<div class="line">        },</div>
+<div class="line">        <span class="stringliteral">&quot;tag_hi_ext&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;lexicon&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;[tag_hi]&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;早上好&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;晚上好&quot;</span></div>
+<div class="line">          ]</div>
+<div class="line">        },</div>
+<div class="line">        <span class="stringliteral">&quot;tag_city&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;lexicon&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;北京&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;上海&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;广州&quot;</span></div>
+<div class="line">          ]</div>
+<div class="line">        }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>用户词典： </p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;tag_pay&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;lexicon&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;支付&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;付款&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;付钱&quot;</span></div>
+<div class="line">                ]</div>
+<div class="line">        },</div>
+<div class="line">        <span class="stringliteral">&quot;tag_currency&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;lexicon&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;美元&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;人民币&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;欧元&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;日元&quot;</span></div>
+<div class="line">                ]</div>
+<div class="line">        }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>用户语法： </p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;pat_hi&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;phrase&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;[tag_hi]|[tag_hi_ext]&quot;</span></div>
+<div class="line">                ]</div>
+<div class="line">        },</div>
+<div class="line">        <span class="stringliteral">&quot;pat_location&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;phrase&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;(我在|我住)[tag_city]&quot;</span></div>
+<div class="line">                ]</div>
+<div class="line">        },</div>
+<div class="line">        <span class="stringliteral">&quot;pat_want&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;phrase&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;我想|我要&quot;</span></div>
+<div class="line">                ]</div>
+<div class="line">        },</div>
+<div class="line">        <span class="stringliteral">&quot;pat_pay&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;phrase&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;(([tag_pay][tag_currency]))&quot;</span></div>
+<div class="line">                ]</div>
+<div class="line">        }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>用户意图： </p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;ent_pay_money&quot;</span>: {</div>
+<div class="line">                <span class="stringliteral">&quot;condition&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;HIT(pat_hi) and HIT(pat_location) and HIT(pat_want) and (HIT(pat_pay) or true) and CVR(40)&quot;</span></div>
+<div class="line">                ],</div>
+<div class="line">        <span class="stringliteral">&quot;variable&quot;</span>: [</div>
+<div class="line">                <span class="stringliteral">&quot;(B::HIT::pat_pay)city=S::VAR::pat_location::tag_city&quot;</span>,</div>
+<div class="line">                <span class="stringliteral">&quot;currency=S::VAR::pat_pay::tag_currency&quot;</span></div>
+<div class="line">                ]</div>
+<div class="line">        }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>以上语法资源均可通过设置适用不同场景，更多语法设置方式请咨询捷通华声或关注开发者社区 </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:02 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

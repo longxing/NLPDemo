@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hcicloudnluexample">HciCloud Nlu Example Begin!\n</string>
+    <string name="app_name">AndroidHciCloudNluExample</string>
+    <string name="msg_operate_success">操作成功</string>
+    <string name="msg_operate_failed">操作失败,请检查</string>
+    <string name="result_result_null">结果为空</string>
+    <string name="result_result_is">结果为：</string>
+
+</resources>

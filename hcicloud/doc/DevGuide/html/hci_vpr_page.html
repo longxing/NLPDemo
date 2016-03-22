@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): VPR能力描述</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_appendix.html">附录</a></li><li class="navelem"><a class="el" href="caplist_page.html">能力列表</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">VPR能力描述 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>下面列出灵云支持的VPR能力中的识别功能：</p>
+<p><b>云端VPR能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>支持音频格式</b>  </td></tr>
+<tr>
+<td>vpr.cloud.recog </td><td>alaw8k8bit<br/>
+ ulaw8k8bit<br/>
+ pcm8k16bit<br/>
+ alaw16k8bit<br/>
+ ulaw16k8bit<br/>
+ pcm16k16bit<br/>
+   </td></tr>
+</table>
+<p><b>本地端VPR能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>背景模型类型</b> </td><td><b>所需本地库文件</b>  </td></tr>
+<tr>
+<td>vpr.local.recog </td><td>gmm_8k<br/>
+ gmm_16k<br/>
+ iv<br/>
+  </td><td>diag_ubm_256_8k.final.dubm gmm256_iv200.final.conf<br/>
+ diag_ubm_256_16k.final.dubm gmm256_iv200.final.conf<br/>
+ gmm256_iv200.final.ubm gmm256_iv200.final.ubm.ie gmm256_iv200.final.ubm.ie.mean gmm256_iv200.final.ubm.pld gmm256_iv200.final.conf<br/>
+   </td></tr>
+</table>
+<p><b>本地声纹识别资源列表</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>资源目录</b> </td><td><b>支持音频格式</b>  </td></tr>
+<tr>
+<td>16k </td><td>pcm16k16bit<br/>
+ ulaw16k8bit<br/>
+ alaw16k8bit<br/>
+  </td></tr>
+<tr>
+<td>8k </td><td>pcm8k16bit<br/>
+ ulaw8k8bit<br/>
+ alaw8k8bit<br/>
+  </td></tr>
+</table>
+<dl class="section note"><dt>注解</dt><dd><b>VPR本地资源管理</b> <br/>
+ vpr本地资源有两种模型，分别为gmm和iv，系统默认为iv，如果使用gmm模型，需要在引擎配置文件gmm256_iv200.final.conf中添加<br/>
+ &ndash;model-type=gmm配置串, 两种模型还需要在引擎配置文件中添加&ndash;mfcc.sample-frequency配置项，暂时仅支持8000和16000两个选项<br/>
+ 如果需要进行语音质量检查，则须添加&ndash;voice-detect-quality=true配置串,应用场景不同，须咨询捷通华声获取最优配置<br/>
+ 需要注意，android平台上如果使用android_so标记，则需要添加&ndash;model_prefix=lib &ndash;model_suffix=.so配置项<br/>
+</dd>
+<dd>
+<b>VPR本地用户管理</b> <br/>
+ 本地添加用户和删除用户的用户管理接口的第一个参数groupid必须传NULL,这样才会在本地生成一个默认组用于一次性保存用户列表</dd></dl>
+<h1><a class="anchor" id="hci_vpr_intel_mkl"></a>
+Intel MKL库</h1>
+<p>windows上VPR本地识别需要使用Intel MKL库，见下表 </p>
+<table class="doxtable">
+<tr>
+<td>libmmd.dll </td></tr>
+<tr>
+<td>mkl_avx.dll </td></tr>
+<tr>
+<td>mkl_avx2.dll </td></tr>
+<tr>
+<td>mkl_core.dll </td></tr>
+<tr>
+<td>mkl_p4.dll </td></tr>
+<tr>
+<td>mkl_p4m.dll </td></tr>
+<tr>
+<td>mkl_p4m3.dll </td></tr>
+<tr>
+<td>mkl_p4p.dll </td></tr>
+<tr>
+<td>mkl_rt.dll </td></tr>
+<tr>
+<td>mkl_sequential.dll </td></tr>
+<tr>
+<td>mkl_vml_avx.dll </td></tr>
+<tr>
+<td>mkl_vml_avx2.dll </td></tr>
+<tr>
+<td>mkl_vml_cmpt.dll </td></tr>
+<tr>
+<td>mkl_vml_ia.dll </td></tr>
+<tr>
+<td>mkl_vml_p4.dll </td></tr>
+<tr>
+<td>mkl_vml_p4m.dll </td></tr>
+<tr>
+<td>mkl_vml_p4m2.dll </td></tr>
+<tr>
+<td>mkl_vml_p4m3.dll </td></tr>
+<tr>
+<td>mkl_vml_p4p.dll </td></tr>
+<tr>
+<td>svml_dispmd.dll </td></tr>
+</table>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:02 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

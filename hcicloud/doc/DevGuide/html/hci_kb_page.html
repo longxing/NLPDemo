@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): KB能力描述</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_appendix.html">附录</a></li><li class="navelem"><a class="el" href="caplist_page.html">能力列表</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">KB能力描述 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="capkey_list"></a>
+能力列表</h1>
+<p>下面列出灵云支持的KB能力：</p>
+<p><b>本地键盘能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>capkey</b> </td><td><b>依赖资源</b>  </td></tr>
+<tr>
+<td>kb.local.recog </td><td>kb.dic<br/>
+ kb.conf   </td></tr>
+</table>
+<h1><a class="anchor" id="setting_list"></a>
+配置列表</h1>
+<p><b>本地键盘能力资源列表</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>资源目录（lang）</b> </td><td><b>语种</b> </td><td><b>支持配置</b>  </td></tr>
+<tr>
+<td>chinese </td><td>中文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>faultTolerantLevel:</b>none,low,high，默认值none<br/>
+ <b>inputMode:</b>pinyin,stroke,wubi,shuangpin，默认值pinyin<br/>
+ <b>convMode:</b>pinyin,stroke,wubi，默认值pinyin   </td></tr>
+<tr>
+<td>chinese_hk </td><td>中文(香港) </td><td><b>inputMode:</b>stroke,cangjie,sm_cangjie，默认值stroke<br/>
+ <b>convMode:</b>stroke，默认值stroke   </td></tr>
+<tr>
+<td>chinese_tr </td><td>中文(台湾) </td><td><b>inputMode:</b>stroke,bopomofo,cangjie,sm_cangjie，默认值stroke<br/>
+ <b>convMode:</b>stroke,bopomofo，默认值stroke   </td></tr>
+<tr>
+<td>english </td><td>英文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>japanese </td><td>日文 </td><td><b>inputMode:</b>hiragana，默认值hiragana   </td></tr>
+<tr>
+<td>korean </td><td>韩文 </td><td><p class="starttd"><b>inputMode:</b>hangul，默认值hangul<br/>
+ <b>convMode:</b>hangul，默认值hangul  </p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>arabic </td><td>阿拉伯文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>german </td><td>德文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>russian </td><td>俄文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>french </td><td>法文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>dutch </td><td>荷兰文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>portuguese </td><td>葡萄牙文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>thai </td><td>泰文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>spanish </td><td>西班牙文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>greek </td><td>希腊文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+<tr>
+<td>italian </td><td>意大利文 </td><td><b>keyboard:</b>t9,qwerty，默认值t9<br/>
+ <b>inputMode:</b>auto,lower,upper,firstupper，默认值auto<br/>
+ <b>convMode:</b>auto,lower,upper，默认值auto<br/>
+ <b>inputtype:</b>press,slide，默认值press   </td></tr>
+</table>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:02 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

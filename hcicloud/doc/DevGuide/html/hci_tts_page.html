@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): TTS能力描述</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_appendix.html">附录</a></li><li class="navelem"><a class="el" href="caplist_page.html">能力列表</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">TTS能力描述 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>下面列出灵云支持的TTS能力：</p>
+<p><b>云端中文TTS能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>音色</b> </td><td><b>支持语种</b> </td><td><b>支持配置</b> </td><td><b>支持领域</b> </td><td><b>所需本地库文件</b>  </td></tr>
+<tr>
+<td>tts.cloud.wangjing </td><td>女声 </td><td>中文 </td><td rowspan="3"><b>puncMode:</b>off,on,off_rtn,on_rtn<br/>
+ <b>digitMode:</b>auto_number,auto_telegram,<br/>
+ number,telegram<br/>
+ <b>engMode:</b>auto,letter<br/>
+ <b>voiceStyle:</b>clear,vivid,normal,plain  </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.haobo </td><td>男声 </td><td>中文 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.xiaokun </td><td>女声 </td><td>中文 </td><td>common 通用领域<br/>
+ carborne 汽运<br/>
+ elecpower 电力<br/>
+ finance 金融证券<br/>
+ insurance 保险<br/>
+ message 短信<br/>
+ queue 排队<br/>
+ revenue 税务<br/>
+ voyage 航空<br/>
+ weather 天气预报<br/>
+  </td><td>无  </td></tr>
+</table>
+<p><b>云端其他语言TTS能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>音色</b> </td><td><b>支持语种</b> </td><td><b>支持配置</b> </td><td><b>支持领域</b> </td><td><b>所需本地库文件</b>  </td></tr>
+<tr>
+<td>tts.cloud.maged </td><td>男声 </td><td>阿拉伯语 </td><td rowspan="37"></td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.thomas </td><td>男声 </td><td>法语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.sebastien </td><td>男声 </td><td>法语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.audrey-ml </td><td>女声 </td><td>法语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.kyoko </td><td>女声 </td><td>日语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.narae </td><td>女声 </td><td>韩语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.milena </td><td>女声 </td><td>俄语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.diego </td><td>男声 </td><td>西班牙语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.monica </td><td>女声 </td><td>西班牙语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.narisa </td><td>女声 </td><td>泰语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.vera </td><td>女声 </td><td>葡萄牙语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.joana </td><td>女声 </td><td>葡萄牙语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.anna </td><td>女声 </td><td>德语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.steffi </td><td>女声 </td><td>德语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.yannick </td><td>男声 </td><td>德语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.xiaojie </td><td>女声 </td><td>粤语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.alice-ml </td><td>女声 </td><td>意大利语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.damayanti </td><td>女声 </td><td>印度尼西亚语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.serena </td><td>女声 </td><td>英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.daniel </td><td>男声 </td><td>英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.javier </td><td>男声 </td><td>墨西哥西班牙语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.paulina </td><td>女声 </td><td>墨西哥西班牙语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.tom </td><td>男声 </td><td>美国英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.samantha </td><td>女声 </td><td>美国英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.allison </td><td>女声 </td><td>美国英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.donna </td><td>女声 </td><td>美国英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.jill </td><td>女声 </td><td>美国英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.carol </td><td>女声 </td><td>美国英语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.julie.fr </td><td>女声 </td><td>加拿大法语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.amelie </td><td>女声 </td><td>加拿大法语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.felix </td><td>男声 </td><td>加拿大法语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.aylin </td><td>女声 </td><td>土耳其语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.yelda </td><td>女声 </td><td>土耳其语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.claire </td><td>女声 </td><td>荷兰语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.xander </td><td>男声 </td><td>荷兰语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.melina </td><td>女声 </td><td>希腊语 </td><td></td><td>无  </td></tr>
+<tr>
+<td>tts.cloud.alexandros </td><td>男声 </td><td>希腊语 </td><td></td><td>无  </td></tr>
+</table>
+<p><b>本地端TTS能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>所需本地库文件</b>  </td></tr>
+<tr>
+<td>tts.local.synth </td><td>CNPackage.dat<br/>
+ ENPackage.dat(可选)<br/>
+ DMPackage.dat(可选)<br/>
+  </td></tr>
+</table>
+<p><b>本地端TTS音库资源明细</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>发音人或目录</b> </td><td><b>音色</b> </td><td><b>支持语种</b> </td><td><b>支持领域</b>  </td></tr>
+<tr>
+<td>XiaoKun </td><td>女声，柔美 </td><td rowspan="13">中文，英文 </td><td>通用，导航（见XiaoKun_Navigation）  </td></tr>
+<tr>
+<td>ZhangNan </td><td>女声，嘹亮 </td><td>通用，导航（见ZhangNan_Navigation）  </td></tr>
+<tr>
+<td>WangJing </td><td>女声，亲切 </td><td rowspan="16">通用  </td></tr>
+<tr>
+<td>LiRan </td><td>女声，激昂  </td></tr>
+<tr>
+<td>XiaoWei </td><td>女声，邻家  </td></tr>
+<tr>
+<td>ZhangGe </td><td>女声，鲁腔  </td></tr>
+<tr>
+<td>XiaoYu </td><td>女声，气场  </td></tr>
+<tr>
+<td>XiaoXin </td><td>女声，动漫  </td></tr>
+<tr>
+<td>ZhaQian </td><td>女声，专业  </td></tr>
+<tr>
+<td>WuJing </td><td>女声，生活  </td></tr>
+<tr>
+<td>BaiSong </td><td>男声，激昂  </td></tr>
+<tr>
+<td>ShenXu </td><td>男声，生活  </td></tr>
+<tr>
+<td>XiXi </td><td>童声，可爱  </td></tr>
+<tr>
+<td>ShuYi </td><td>女声，端庄 </td><td>中文（粤语），英文  </td></tr>
+<tr>
+<td>ZhuYun </td><td>女声，台韵 </td><td><p class="starttd">中文（台湾），英文</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>Brana </td><td>女声，生活 </td><td rowspan="3">西式英文，需要配合其他中文音库使用  </td></tr>
+<tr>
+<td>Cameal </td><td>女声，成熟  </td></tr>
+<tr>
+<td>Barron </td><td>男声，成熟  </td></tr>
+</table>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:02 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): NLU能力</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_capability_api.html">能力API</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">NLU能力 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>以下描述了如何使用灵云NLU能力。</p>
+<h1><a class="anchor" id="hci_nul_intro"></a>
+1. NLU简介</h1>
+<p>NLU (Natural Language Understanding) 自然语言理解技术，涵盖领域非常广泛，包括句子检测，分词，词性标注，句法分析， 文本分类/聚类，文字角度，信息抽取/自动摘要，机器翻译，自动问答，文本生成等多个领域。</p>
+<h1><a class="anchor" id="hci_nlu_choice"></a>
+2. 选择模块和能力</h1>
+<p>nlu.cloud : 云端识别，支持不同领域内的语言理解<br/>
+ nlu.local.recog : 本地识别，支持基于字典语法的语言理解<br/>
+</p>
+<p>使用云端的识别能力，需要基础模块hci_nlu，以及hci_nlu_cloud_recog模块，<br/>
+ 使用本地的识别能力，需要基础模块hci_nlu，以及hci_nlu_local_recog模块。</p>
+<h1><a class="anchor" id="hci_nlu_recog"></a>
+3. 语言理解</h1>
+<p>通过hci_nlu_recog() 进行语言理解 </p>
+<div class="fragment"><div class="line">    Session mSessionId = <span class="keyword">new</span> Session();</div>
+<div class="line">    String sessionConfig = <span class="stringliteral">&quot;capKey=nlu.cloud&quot;</span>;</div>
+<div class="line"><span class="keywordtype">int</span> nRet = HciCloudNlu.hciNluSessionStart(sConfig, mSession);</div>
+<div class="line"></div>
+<div class="line">    String sRecogText = <span class="stringliteral">&quot;今天天气怎么样&quot;</span>;</div>
+<div class="line">    String recogConfig =<span class="stringliteral">&quot; &quot;</span> ;<span class="comment">//云端必传intention，比如&quot;intention=weather&quot;</span></div>
+<div class="line">    NluRecogResult nluResult = <span class="keyword">new</span> NluRecogResult();</div>
+<div class="line">    nRet = HciCloudNlu.hciNluRecog(mSessionId, sRecogText, recogConfig, nluResult);</div>
+</div><!-- fragment --><p> 识别结果包括识别内容以及意图结果</p>
+<h1><a class="anchor" id="hci_nlu_config"></a>
+4. 识别选项</h1>
+<p>云端能力<br/>
+ 1.intention 意图识别领域 指定意图识别的领域，领域可以组合<br/>
+ 2.needcontent 是否返回内容 yes:返回意图识别结果与相关内容 no: 仅返回意图识别结果 本地能力<br/>
+ 1.candidateCount 候选意图结果个数 如果设置多个意图，则会产生多个意图结果<br/>
+ </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:01 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

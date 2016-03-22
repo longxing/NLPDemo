@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): ASR能力描述</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_appendix.html">附录</a></li><li class="navelem"><a class="el" href="caplist_page.html">能力列表</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ASR能力描述 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="capkey_detail"></a>
+能力列表</h1>
+<p>下面列出灵云支持的ASR能力：</p>
+<p><b>云端语法识别能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>类别</b> </td><td><b>语种</b> </td><td><b>领域</b> </td><td><b>所需本地库文件</b>  </td></tr>
+<tr>
+<td>asr.cloud.grammar </td><td>语法识别 </td><td>中文 </td><td>N/A </td><td>无  </td></tr>
+</table>
+<p><b>云端自由说识别能力</b> </p>
+<table class="doxtable">
+<tr>
+<td>asr.cloud.freetalk </td><td>自由说 </td><td>中文 </td><td>通用领域 </td><td>无  </td></tr>
+<tr>
+<td>asr.cloud.freetalk.music </td><td>自由说 </td><td>中文 </td><td>音乐歌曲 </td><td>无  </td></tr>
+<tr>
+<td>asr.cloud.freetalk.poi </td><td>自由说 </td><td>中文 </td><td>地图导航 </td><td>无  </td></tr>
+<tr>
+<td>asr.cloud.freetalk.english </td><td>自由说 </td><td>英文 </td><td>通用领域 </td><td>无  </td></tr>
+<tr>
+<td>asr.cloud.freetalk.uyghur </td><td>自由说 </td><td>维吾尔语 </td><td>通用领域 </td><td>无  </td></tr>
+<tr>
+<td>asr.cloud.freetalk.taiwan </td><td>自由说 </td><td>台湾国语 </td><td>通用领域 </td><td>无  </td></tr>
+</table>
+<p><b>云端意图识别能力</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>类别</b> </td><td><b>语种</b> </td><td><b>支持意图</b> </td><td><b>所需本地库文件</b>  </td></tr>
+<tr>
+<td>asr.cloud.dialog </td><td>意图识别 </td><td>中文 </td><td>weather,call,map,... </td><td>无  </td></tr>
+</table>
+<p><b>云端NLU能力支持的意图配置</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>意图识别领域（intention）</b> </td><td><b>中文描述</b>  </td></tr>
+<tr>
+<td>weather </td><td>天气  </td></tr>
+<tr>
+<td>map </td><td>地图  </td></tr>
+<tr>
+<td>train </td><td>火车查询  </td></tr>
+<tr>
+<td>flight </td><td>航班查询  </td></tr>
+<tr>
+<td>terminal </td><td>车机终端  </td></tr>
+<tr>
+<td>music </td><td>音乐  </td></tr>
+<tr>
+<td>message </td><td>发短信  </td></tr>
+<tr>
+<td>schedule </td><td>提醒  </td></tr>
+<tr>
+<td>stock </td><td>股票  </td></tr>
+<tr>
+<td>weibo </td><td>发微博  </td></tr>
+<tr>
+<td>websearch </td><td>网页搜索  </td></tr>
+<tr>
+<td>website </td><td>打开网站  </td></tr>
+<tr>
+<td>calendar </td><td>日历  </td></tr>
+<tr>
+<td>cookbook </td><td>菜谱  </td></tr>
+<tr>
+<td>exchangeRate </td><td>汇率  </td></tr>
+<tr>
+<td>hotel </td><td>酒店查询  </td></tr>
+<tr>
+<td>joke </td><td>笑话  </td></tr>
+<tr>
+<td>shopping </td><td>购物  </td></tr>
+<tr>
+<td>news </td><td>新闻  </td></tr>
+<tr>
+<td>restaurant </td><td>餐馆查询  </td></tr>
+<tr>
+<td>story </td><td>故事  </td></tr>
+<tr>
+<td>translation </td><td>翻译  </td></tr>
+<tr>
+<td>video </td><td>视频点播  </td></tr>
+<tr>
+<td>yellowpage </td><td>黄页  </td></tr>
+<tr>
+<td>tvPrograms </td><td>智能家居  </td></tr>
+<tr>
+<td>tvChannels </td><td>电视频道  </td></tr>
+<tr>
+<td>app </td><td>应用  </td></tr>
+<tr>
+<td>tvControl </td><td>智能电视  </td></tr>
+<tr>
+<td>musicControl </td><td>音乐控制  </td></tr>
+<tr>
+<td>videoControl </td><td>视频控制  </td></tr>
+<tr>
+<td>deviceControl </td><td>设备控制  </td></tr>
+<tr>
+<td>contacts </td><td>打电话  </td></tr>
+<tr>
+<td>radio </td><td>收音机  </td></tr>
+<tr>
+<td>carControl </td><td><p class="starttd">车载控制 </p>
+<p class="endtd"></p>
+</td></tr>
+</table>
+<p>更多意图配置请咨询捷通华声或关注开发者社区</p>
+<p><b>本地端语音识别能力：</b> </p>
+<table class="doxtable">
+<tr>
+<td><b>能力Key</b> </td><td><b>类别</b> </td><td><b>语种支持</b> </td><td><b>领域</b> </td><td><b>所需本地库文件</b>  </td></tr>
+<tr>
+<td>asr.local.grammar.v4 </td><td>语法识别 </td><td>中文 </td><td>N/A </td><td>grm_decoder.conf<br/>
+ ispk_aux.dat<br/>
+ ispk_dnn.dat<br/>
+ ispk_g2p.dat   </td></tr>
+<tr>
+<td>asr.local.freetalk(仅Android支持) </td><td>自由说 </td><td>中文 </td><td>N/A </td><td>ft_decoder.conf<br/>
+ ispk_dnn.dat<br/>
+ ispk_hclg.dat<br/>
+ ispk_blm.dat<br/>
+ ispk_slm.dat<br/>
+  </td></tr>
+</table>
+<h1><a class="anchor" id="hci_asr_intel_mkl"></a>
+Intel MKL库</h1>
+<p>windows上V4本地识别需要使用Intel MKL库，见下表 </p>
+<table class="doxtable">
+<tr>
+<td>libmmd.dll </td></tr>
+<tr>
+<td>mkl_avx.dll </td></tr>
+<tr>
+<td>mkl_avx2.dll </td></tr>
+<tr>
+<td>mkl_core.dll </td></tr>
+<tr>
+<td>mkl_p4.dll </td></tr>
+<tr>
+<td>mkl_p4m.dll </td></tr>
+<tr>
+<td>mkl_p4m3.dll </td></tr>
+<tr>
+<td>mkl_p4p.dll </td></tr>
+<tr>
+<td>mkl_rt.dll </td></tr>
+<tr>
+<td>mkl_sequential.dll </td></tr>
+<tr>
+<td>mkl_vml_avx.dll </td></tr>
+<tr>
+<td>mkl_vml_avx2.dll </td></tr>
+<tr>
+<td>mkl_vml_cmpt.dll </td></tr>
+<tr>
+<td>mkl_vml_ia.dll </td></tr>
+<tr>
+<td>mkl_vml_p4.dll </td></tr>
+<tr>
+<td>mkl_vml_p4m.dll </td></tr>
+<tr>
+<td>mkl_vml_p4m2.dll </td></tr>
+<tr>
+<td>mkl_vml_p4m3.dll </td></tr>
+<tr>
+<td>mkl_vml_p4p.dll </td></tr>
+<tr>
+<td>svml_dispmd.dll </td></tr>
+</table>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:02 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

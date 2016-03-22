@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>灵云SDK开发手册(Java API): 用户模块</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">灵云SDK开发手册(Java API)
+   &#160;<span id="projectnumber">5.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.3.1 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>开发指南</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="hci_dev_content.html">开发指南</a></li><li class="navelem"><a class="el" href="hci_dev_sys_api.html">系统API</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">用户模块 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>以下描述了如何使用灵云用户API，通过使用灵云用户API可以方便的将开发者自身的用户系统绑定到灵云平台上来。 方便的使用在VPR,FRP,AFR等各项生物特征识别上来，同时还可以在多个设备上使用同一个用户进行访问，对请求进行关联。</p>
+<h1><a class="anchor" id="hci_user_manager"></a>
+1. 灵云用户管理</h1>
+<p>灵云用户，即开发者通过灵云平台管理自己的用户或继承自身已经存在的用户系统。同时灵云平台提供了用户组的概念，方便开发者在多个应用中管理自己的用户。 用户组在创建时有共享和独占两种方式。 开发者所有应用中的用户共享，用户组按照创建时的指定共享或独占。一个用户可以从属于多个用户组。</p>
+<h1><a class="anchor" id="hci_user_api"></a>
+2. 灵云用户管理相关接口</h1>
+<p>灵云用户管理相关接口在类HciCloudUser中实现：<br/>
+ 添加一个用户到某一个组<br/>
+ </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span>      hciAddUser(java.lang.String groupId, java.lang.String userId) </div>
+</div><!-- fragment --><p> 创建一个用户组需要指定为同一个开发者共享还是该应用独占<br/>
+ </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span>      hciCreateGroup(java.lang.String groupId, <span class="keywordtype">int</span> groupType) </div>
+</div><!-- fragment --><p> 删除一个用户组 解除该组userid和组之间的关系，该组用户不删除<br/>
+ </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span>      hciDeleteGroup(java.lang.String groupId) </div>
+</div><!-- fragment --><p> 获取开发者该应用所能访问的组列表<br/>
+ </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span>      hciGetGrouplist(java.util.ArrayList&lt;java.lang.String&gt; groupList) </div>
+</div><!-- fragment --><p> 获取开发者该应用所能访问的组列表<br/>
+ </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span>      hciGetUserlist(java.lang.String groupId, java.util.ArrayList&lt;java.lang.String&gt; userList) </div>
+</div><!-- fragment --><p> 从一个组中删除一个用户<br/>
+ </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span>      hciRemoveUser(java.lang.String groupId, java.lang.String userId) </div>
+</div><!-- fragment --><p> 设置当前用户 开发者指定当前用户<br/>
+ </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span>      hciSetCurrentUser(java.lang.String userId) </div>
+</div><!-- fragment --> </div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 一月 15日 星期五 17:49:02 , 为 灵云SDK开发手册(Java API)使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>
